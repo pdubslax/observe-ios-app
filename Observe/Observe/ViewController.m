@@ -79,18 +79,15 @@
     // other fields can be set if you want to save more information
     user[@"phone"] = @"231-409-9896";
     
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-            FeedbackDraftViewController* vc = [FeedbackDraftViewController new];
-            [self presentViewController:vc animated:YES completion:^{
-                //
-            }];
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
-        }
+    [PFUser logInWithUsernameInBackground:user.username password:user.password block:^(PFUser *user, NSError *error) {
+        //
+        FeedbackDraftViewController* vc = [FeedbackDraftViewController new];
+        [self presentViewController:vc animated:YES completion:^{
+            //
+        }];
     }];
+    
+    
     
     
     
