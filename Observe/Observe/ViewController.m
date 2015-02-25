@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FeedbackDraftViewController.h"
 #import "UIColor+colorFromHexString.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()
 
@@ -69,10 +70,28 @@
 
 - (void)loginPressed:(UIButton*)button{
     //push the next screen
-    FeedbackDraftViewController* vc = [FeedbackDraftViewController new];
-    [self presentViewController:vc animated:YES completion:^{
-        //
+    
+    PFUser *user = [PFUser user];
+    user.username = @"pdubslax";
+    user.password = @"swagmoney";
+    user.email = @"pdubslax@umich.edu";
+    
+    // other fields can be set if you want to save more information
+    user[@"phone"] = @"231-409-9896";
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+            FeedbackDraftViewController* vc = [FeedbackDraftViewController new];
+            [self presentViewController:vc animated:YES completion:^{
+                //
+            }];
+        } else {
+            NSString *errorString = [error userInfo][@"error"];
+            // Show the errorString somewhere and let the user try again.
+        }
     }];
+    
     
     
 }
