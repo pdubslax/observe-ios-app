@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "FeedbackDraftViewController.h"
+#import "UIColor+colorFromHexString.h"
 
 @interface ViewController ()
 
@@ -41,6 +43,7 @@
 - (void)loadLoginButton{
     self.loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    [self.loginButton setTintColor:[UIColor colorFromHexString:@"6C7A89"]];
     [self.loginButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:45]];
     [self.loginButton addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.loginButton];
@@ -66,6 +69,10 @@
 
 - (void)loginPressed:(UIButton*)button{
     //push the next screen
+    FeedbackDraftViewController* vc = [FeedbackDraftViewController new];
+    [self presentViewController:vc animated:YES completion:^{
+        //
+    }];
     
     
 }
