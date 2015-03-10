@@ -506,6 +506,7 @@
 				8BAC47441A9E27C3006302CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8BAC47451A9E27C3006302CE /* Build configuration list for PBXNativeTarget "ObserveTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +515,7 @@
 				8BAC47471A9E27C3006302CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
