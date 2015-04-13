@@ -12,6 +12,8 @@
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
+#import "ChooseViewController.h"
+#import "SharedManager.h"
 
 @interface FeedbackDraftViewController () <UITextViewDelegate, CLLocationManagerDelegate>
 
@@ -23,8 +25,10 @@
 @property (nonatomic, strong) NSLayoutConstraint *textHeight;
 @property (nonatomic, strong) NSLayoutConstraint *buttonHeight;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *locationResults;
 @property (nonatomic) float longitude;
 @property (nonatomic) float latitude;
+@property (nonatomic) BOOL done;
 
 
 
@@ -37,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.done = YES;
     
     self.view.backgroundColor = [UIColor colorFromHexString:@"2ECC71"];
     
@@ -57,8 +62,63 @@
     }
     
     
+    
+    
+    
+    
+    
     [self loadSubviews];
     [self autoLayoutSubviews];
+    
+    self.observeLogo.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap)];
+    [self.observeLogo addGestureRecognizer:tapGesture];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    SharedManager *test = [SharedManager sharedManager];
+    self.observeLogo.text = test.entity;
+}
+
+- (void)labelTap{
+    ChooseViewController *viewController = [[ChooseViewController alloc] init];
+    viewController.locationResults = [NSMutableArray new];
+    viewController.locationResults = self.locationResults;
+    [self presentViewController:viewController animated:YES completion:^{
+        //
+    }];
+}
+
+- (void)findLocationParse{
+    [PFCloud callFunctionInBackground:@"get_places"
+                       withParameters:@{@"longitude": [NSString stringWithFormat:@"%f", self.longitude], @"latitude":[NSString stringWithFormat:@"%f", self.latitude]}
+                                block:^(NSDictionary *results, NSError *error) {
+                                    if (!error) {
+                                        // this is where you handle the results and change the UI.
+                                        NSString* test = results[@"text"];
+                                        NSData *data = [test dataUsingEncoding:NSUTF8StringEncoding];
+                                        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                        NSString *label = json[@"results"][0][@"name"];
+                                        self.locationResults = [NSMutableArray new];
+                                        self.locationResults = json[@"results"];
+                                        
+                                        CATransition *animation = [CATransition animation];
+                                        animation.duration = 1.0;
+                                        animation.type = kCATransitionFade;
+                                        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                                        [self.observeLogo.layer addAnimation:animation forKey:@"changeTextTransition"];
+                                        
+                                        // Change the text
+                                        self.observeLogo.text = label;
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                }];
 }
 
 - (void)locationManager:(CLLocationManager*)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -118,6 +178,9 @@
     [self.observeLogo setTextColor:[UIColor whiteColor]];
     [self.observeLogo setTextAlignment:NSTextAlignmentCenter];
     [self.observeLogo setFont:[UIFont fontWithName:@"Helvetica" size:40]];
+    self.observeLogo.numberOfLines = 1;
+    self.observeLogo.minimumFontSize = 8.;
+    self.observeLogo.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.observeLogo];
     
 }
@@ -141,10 +204,10 @@
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[submitButton]-20-|" options:0 metrics:nil views:views]];
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[observeLogo]-|" options:0 metrics:nil views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[observeLogo]" options:0 metrics:nil views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-35-[observeLogo]" options:0 metrics:nil views:views]];
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[inputField]|" options:0 metrics:nil views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-70-[inputField]-10-[submitButton]" options:0 metrics:nil views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[inputField]-10-[submitButton]" options:0 metrics:nil views:views]];
     
     [UIView animateWithDuration:0.2 animations:^{[self.contentView layoutIfNeeded];}];
     
@@ -295,8 +358,16 @@
      didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
     NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    
+    
     self.longitude = location.coordinate.longitude;
     self.latitude =  location.coordinate.latitude;
+    if (self.done){
+        [self findLocationParse];
+    }
+    
+    self. done = false;
+
 }
 
 

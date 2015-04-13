@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B61334A1ADC713500F72EAD /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6133491ADC713500F72EAD /* ChooseViewController.m */; };
+		8B61334D1ADC796C00F72EAD /* SharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B61334C1ADC796C00F72EAD /* SharedManager.m */; };
 		8BAC47251A9E27C3006302CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC47241A9E27C3006302CE /* main.m */; };
 		8BAC47281A9E27C3006302CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC47271A9E27C3006302CE /* AppDelegate.m */; };
 		8BAC472B1A9E27C3006302CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC472A1A9E27C3006302CE /* ViewController.m */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B6133481ADC713500F72EAD /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
+		8B6133491ADC713500F72EAD /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
+		8B61334B1ADC796C00F72EAD /* SharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedManager.h; sourceTree = "<group>"; };
+		8B61334C1ADC796C00F72EAD /* SharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedManager.m; sourceTree = "<group>"; };
 		8BAC471F1A9E27C3006302CE /* Observe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAC47231A9E27C3006302CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BAC47241A9E27C3006302CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -135,6 +141,10 @@
 		8BAC47211A9E27C3006302CE /* Observe */ = {
 			isa = PBXGroup;
 			children = (
+				8B61334B1ADC796C00F72EAD /* SharedManager.h */,
+				8B61334C1ADC796C00F72EAD /* SharedManager.m */,
+				8B6133481ADC713500F72EAD /* ChooseViewController.h */,
+				8B6133491ADC713500F72EAD /* ChooseViewController.m */,
 				8BAC474E1A9E3989006302CE /* UIColor+colorFromHexString.h */,
 				8BAC474F1A9E3989006302CE /* UIColor+colorFromHexString.m */,
 				8BAC474B1A9E33CC006302CE /* ConfirmationViewController.h */,
@@ -305,6 +315,8 @@
 				8BAC472B1A9E27C3006302CE /* ViewController.m in Sources */,
 				8BAC474A1A9E31CA006302CE /* FeedbackDraftViewController.m in Sources */,
 				8BAC47501A9E3989006302CE /* UIColor+colorFromHexString.m in Sources */,
+				8B61334A1ADC713500F72EAD /* ChooseViewController.m in Sources */,
+				8B61334D1ADC796C00F72EAD /* SharedManager.m in Sources */,
 				8BAC47281A9E27C3006302CE /* AppDelegate.m in Sources */,
 				8BAC47251A9E27C3006302CE /* main.m in Sources */,
 				8BAC474D1A9E33CC006302CE /* ConfirmationViewController.m in Sources */,
