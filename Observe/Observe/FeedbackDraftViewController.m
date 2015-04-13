@@ -29,6 +29,7 @@
 @property (nonatomic) float longitude;
 @property (nonatomic) float latitude;
 @property (nonatomic) BOOL done;
+@property (nonatomic) BOOL newFeedback;
 
 
 
@@ -42,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.done = YES;
+    self.newFeedback = YES;
     
     self.view.backgroundColor = [UIColor colorFromHexString:@"2ECC71"];
     
@@ -111,6 +113,9 @@
                                         
                                         // Change the text
                                         self.observeLogo.text = label;
+                                        SharedManager *hey = [SharedManager sharedManager];
+                                        hey.entity = label;
+                                        hey.entityID = json[@"results"][0][@"place_id"];
                                         
                                         
                                         
@@ -249,9 +254,9 @@
 //    [self presentViewController:vc animated:YES completion:^{
 //        //
 //    }];
-
+    SharedManager *test = [SharedManager sharedManager];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks for the feedback"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Thank you for your feedback to %@.",test.entity]
                                                     message:@"Feel free to write some more!"
                                                    delegate:self
                                           cancelButtonTitle:@"Okay"
@@ -259,6 +264,10 @@
     [alert show];
     
     [self sendFeedbackToParse];
+    self.newFeedback = YES;
+    [self.inputField setText:@""];
+    
+    
     
   
 }
@@ -289,14 +298,16 @@
         self.inputField.textColor = [UIColor blackColor];
         [self.inputField setText:@""];
     }
-    else{
-        
-        
-    }
+    
 
     
     [self.contentView removeConstraints:self.contentView.constraints];
     [self keyboardLayout];
+    
+    
+//    [self.inputField setText:@"Enter feedback here.."];
+//    self.inputField.textColor = [UIColor lightGrayColor];
+    
     
 //    else if ([self.inputField.text  isEqual: @""]) {
 //        [self.inputField setText:@"Enter feedback here.."];
@@ -329,10 +340,13 @@
 -(void)sendFeedbackToParse{
     NSString *textContent = self.inputField.text;
     PFObject *feedback = [PFObject objectWithClassName:@"Feedback"];
+    SharedManager *test = [SharedManager sharedManager];
     feedback[@"text"]=textContent;
     feedback[@"latitude"]= [NSNumber numberWithFloat:self.latitude];
     feedback[@"longitude"]= [NSNumber numberWithFloat:self.longitude];
     feedback[@"creator"]=[PFUser currentUser];
+    feedback[@"placeId"]=test.entityID;
+    
     [feedback saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         //
     }];
@@ -340,7 +354,6 @@
     
     
     [self.inputField setText:@"Enter feedback here.."];
-    self.inputField.textColor = [UIColor lightGrayColor];
     
 }
 

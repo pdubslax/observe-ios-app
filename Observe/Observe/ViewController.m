@@ -22,8 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorFromHexString:@"2ECC71"];
     
     [self loadSubviews];
     [self autoLayoutSubviews];
@@ -44,8 +43,8 @@
 - (void)loadLoginButton{
     self.loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-    [self.loginButton setTintColor:[UIColor colorFromHexString:@"6C7A89"]];
-    [self.loginButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:45]];
+    [self.loginButton setTintColor:[UIColor whiteColor]];
+    [self.loginButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:45]];
     [self.loginButton addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.loginButton];
 }
@@ -63,7 +62,7 @@
                             };
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[loginButton]-|" options:0 metrics:nil views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[loginButton]-|" options:0 metrics:nil views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[loginButton]-390-|" options:0 metrics:nil views:views]];
 
     
 }

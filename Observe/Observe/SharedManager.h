@@ -10,10 +10,12 @@
 
 @interface SharedManager : NSObject{
     NSString *entity;
+    NSString *entityID;
 
 }
 
 @property (nonatomic, retain) NSString *entity;
+@property (nonatomic, retain) NSString *entityID;
 
 
 

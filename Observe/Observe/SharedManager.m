@@ -11,6 +11,7 @@
 @implementation SharedManager
 
 @synthesize entity;
+@synthesize entityID;
 
 
 
@@ -28,6 +29,7 @@
 - (id)init {
     if (self = [super init]) {
         entity = @"Observe";
+        entityID = @"";
         
     }
     return self;

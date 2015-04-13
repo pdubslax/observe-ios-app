@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor blackColor]];
     
     NSLog(@"%@",self.locationResults);
     
@@ -34,6 +34,7 @@
 {
     SharedManager *hey = [SharedManager sharedManager];
     hey.entity = self.locationResults[indexPath.row][@"name"];
+    hey.entityID = self.locationResults[indexPath.row][@"place_id"];
     
     [self dismissViewControllerAnimated:YES completion:^{
         //
@@ -69,6 +70,7 @@
     }
     
     cell.textLabel.text = self.locationResults[indexPath.row][@"name"];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
 }
