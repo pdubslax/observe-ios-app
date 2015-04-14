@@ -45,7 +45,7 @@
     self.done = YES;
     self.newFeedback = YES;
     
-    self.view.backgroundColor = [UIColor colorFromHexString:@"2ECC71"];
+    self.view.backgroundColor = [UIColor colorFromHexString:@"15BF73"];
     
     _locationManager = [CLLocationManager new];
     _locationManager.delegate = self;

@@ -10,6 +10,13 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic)  UITextView *textView;
+@property (strong, nonatomic)  UITextView *textView2;
+
+@property (strong, nonatomic) UIButton *button1;
+@property (strong, nonatomic) UIButton *button2;
+
+
 
 @end
 
