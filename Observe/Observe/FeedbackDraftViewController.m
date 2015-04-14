@@ -256,12 +256,14 @@
 //    }];
     SharedManager *test = [SharedManager sharedManager];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Thank you for your feedback to %@.",test.entity]
-                                                    message:@"Feel free to write some more!"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks for the feedback"
+                                                    message:[NSString stringWithFormat: @"We recieved your feedback about %@.\n\n We're already working on finding their contact info. Rest assured that we'll pass your feedback along to them!\n\n Feel free to write some more feedback!", test.entity]
                                                    delegate:self
                                           cancelButtonTitle:@"Okay"
                                           otherButtonTitles:nil];
+    
     [alert show];
+    
     
     [self sendFeedbackToParse];
     self.newFeedback = YES;
