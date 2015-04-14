@@ -20,6 +20,7 @@
 		8B6133651ADD983500F72EAD /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B61335A1ADD983500F72EAD /* Icon-Small@2x.png */; };
 		8B6133661ADD983500F72EAD /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B61335B1ADD983500F72EAD /* Icon-Small@3x.png */; };
 		8B6133681ADD986200F72EAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B6133671ADD986200F72EAD /* Images.xcassets */; };
+		8B61336B1ADD9E6500F72EAD /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B61336A1ADD9E6500F72EAD /* TestViewController.m */; };
 		8BAC47251A9E27C3006302CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC47241A9E27C3006302CE /* main.m */; };
 		8BAC47281A9E27C3006302CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC47271A9E27C3006302CE /* AppDelegate.m */; };
 		8BAC472B1A9E27C3006302CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAC472A1A9E27C3006302CE /* ViewController.m */; };
@@ -72,6 +73,8 @@
 		8B61335A1ADD983500F72EAD /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		8B61335B1ADD983500F72EAD /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		8B6133671ADD986200F72EAD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8B6133691ADD9E6500F72EAD /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = Observe/TestViewController.h; sourceTree = "<group>"; };
+		8B61336A1ADD9E6500F72EAD /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = Observe/TestViewController.m; sourceTree = "<group>"; };
 		8BAC471F1A9E27C3006302CE /* Observe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAC47231A9E27C3006302CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BAC47241A9E27C3006302CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		8BAC47161A9E27C3006302CE = {
 			isa = PBXGroup;
 			children = (
+				8B6133691ADD9E6500F72EAD /* TestViewController.h */,
+				8B61336A1ADD9E6500F72EAD /* TestViewController.m */,
 				8BAC47211A9E27C3006302CE /* Observe */,
 				8BAC473B1A9E27C3006302CE /* ObserveTests */,
 				8BAC47201A9E27C3006302CE /* Products */,
@@ -366,6 +371,7 @@
 				8B61334A1ADC713500F72EAD /* ChooseViewController.m in Sources */,
 				8B61334D1ADC796C00F72EAD /* SharedManager.m in Sources */,
 				8BAC47281A9E27C3006302CE /* AppDelegate.m in Sources */,
+				8B61336B1ADD9E6500F72EAD /* TestViewController.m in Sources */,
 				8BAC47251A9E27C3006302CE /* main.m in Sources */,
 				8BAC474D1A9E33CC006302CE /* ConfirmationViewController.m in Sources */,
 			);

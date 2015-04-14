@@ -17,12 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     NSLog(@"%@",self.locationResults);
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(30,0,0,0)];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -71,8 +71,8 @@
     }
     
     cell.textLabel.text = self.locationResults[indexPath.row][@"name"];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }

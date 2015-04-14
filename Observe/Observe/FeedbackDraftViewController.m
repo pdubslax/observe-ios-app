@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import "ChooseViewController.h"
 #import "SharedManager.h"
+#import "TestViewController.h"
 
 @interface FeedbackDraftViewController () <UITextViewDelegate, CLLocationManagerDelegate>
 
@@ -87,9 +88,22 @@
     ChooseViewController *viewController = [[ChooseViewController alloc] init];
     viewController.locationResults = [NSMutableArray new];
     viewController.locationResults = self.locationResults;
-    [self presentViewController:viewController animated:YES completion:^{
-        //
-    }];
+    
+    TestViewController *test = [[TestViewController alloc] initWithRootViewController:viewController];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [navigationController.navigationBar.topItem setTitle:@"Choose Your Location"];
+    [navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+
+    
+    navigationController.navigationBar.barTintColor = [UIColor colorFromHexString:@"15BF73"];
+    [self presentViewController:navigationController animated:YES completion:nil];
+//    [self.navigationController pushViewController:test animated:YES];
+    
+//    [self presentViewController:viewController animated:YES completion:^{
+//        //
+//    }];
 }
 
 - (void)findLocationParse{
