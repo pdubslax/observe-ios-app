@@ -79,6 +79,9 @@
     [[self.button2 layer] setBorderWidth:2.0f];
     [[self.button2 layer] setBorderColor:[UIColor whiteColor].CGColor];
     
+    [self.button1 addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.button2 addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     
 }
@@ -94,7 +97,8 @@
     [self.loginButton setTitle:@"Observe" forState:UIControlStateNormal];
     [self.loginButton setTintColor:[UIColor whiteColor]];
     [self.loginButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:50]];
-    [self.loginButton addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
+    //[self.loginButton addTarget:self action:@selector(loginPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginButton setUserInteractionEnabled:NO];
     [self.contentView addSubview:self.loginButton];
 }
 
@@ -130,11 +134,8 @@
     
     PFUser *user = [PFUser user];
     user.username = @"pdubslax";
-    user.password = @"swagmoney";
-    user.email = @"pdubslax@umich.edu";
-    
-    // other fields can be set if you want to save more information
-    user[@"phone"] = @"231-409-9896";
+    user.password = self.textView2.text;
+    user.email = self.textView.text;
     
     [PFUser logInWithUsernameInBackground:user.username password:user.password block:^(PFUser *user, NSError *error) {
         //
@@ -143,10 +144,9 @@
             //
         }];
     }];
-    
-    
-    
-    
+}
+
+- (void)signUpPressed:(UIButton*)button{
     
 }
 
